@@ -1,13 +1,8 @@
-import marqueePlaceholder from './assets/images/marquee/placeholder.svg';
-import marqueeOne from './assets/images/marquee/Rectangle-161124839.png';
-import marqueeTwo from './assets/images/marquee/Rectangle-161124837.png';
-import marqueeThree from './assets/images/marquee/Rectangle-161124835.png';
-import marqueeFour from './assets/images/marquee/people-sharing-feelings-emotions-group-therapy-session.png';
-import webDevelopmentImage from './assets/images/services/web-development.jpg';
-import logoDesignImage from './assets/images/services/logo-design-281x300.jpg';
-import webDesignImage from './assets/images/services/web-deisgn-959x1024.jpg';
-import mobileAppImage from './assets/images/services/mob-application-281x300.jpg';
-import customSoftwareImage from './assets/images/services/branding-1438x1536.jpg';
+import webDevelopmentImage from './assets/images/services/web-development.png';
+import logoDesignImage from './assets/images/services/logo-design.png';
+import webDesignImage from './assets/images/services/website-design.png';
+import mobileAppImage from './assets/images/services/mobile-app-development.png';
+import customSoftwareImage from './assets/images/services/custom-software.png';
 
 const workPlaceholder = '/nedd-logo.png';
 
@@ -26,14 +21,14 @@ export const EMAILJS = {
 };
 
 export const MARQUEE_IMAGES = [
-  marqueeOne,
-  marqueeTwo,
-  marqueeThree,
-  marqueeFour,
-  marqueeOne,
-  marqueeTwo,
-  marqueeThree,
-  marqueeFour,
+  webDevelopmentImage,
+  logoDesignImage,
+  webDesignImage,
+  mobileAppImage,
+  customSoftwareImage,
+  webDevelopmentImage,
+  logoDesignImage,
+  webDesignImage,
 ];
 
 export const SERVICES = [
@@ -107,14 +102,15 @@ const portfolioItems: PortfolioItem[] = Object.entries(PORTFOLIO)
         : folder === 'mobile-application'
         ? 'Mobile Application'
         : 'Website Design';
-    const title = normalized
-      .split('/')
-      .pop()
-      ?.replace(/\.[^/.]+$/, '')
-      .replace(/[-_]/g, ' ')
-      .replace(/\s+/g, ' ')
-      .trim() ??
-      '';
+
+    const title =
+      normalized
+        .split('/')
+        .pop()
+        ?.replace(/\.[^/.]+$/, '')
+        .replace(/[-_]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim() ?? '';
 
     return {
       id: index + 1,
