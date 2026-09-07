@@ -1,8 +1,8 @@
-import webDevelopmentImage from '../assets/images/services-new/web-development.png';
-import logoDesignImage from '../assets/images/services-new/logo-design.png';
-import websiteDesignImage from '../assets/images/services-new/website-design.png';
-import mobileAppImage from '../assets/images/services-new/mobile-app.png';
-import customSoftwareImage from '../assets/images/services-new/custom-software.png';
+import webDevelopmentImage from '../assets/images/services/web-development.png';
+import logoDesignImage from '../assets/images/services/logo-design.png';
+import websiteDesignImage from '../assets/images/services/website-design.png';
+import mobileAppImage from '../assets/images/services/mobile-app-development.png';
+import customSoftwareImage from '../assets/images/services/custom-software.png';
 
 export interface ServiceItem {
   slug: string;

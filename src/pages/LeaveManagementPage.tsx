@@ -1,6 +1,6 @@
 import { ArrowRight, Bell, CalendarDays, CheckCircle2, ClipboardCheck, FileSpreadsheet, History, ShieldCheck, SlidersHorizontal, UserRound, UsersRound } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import softwareImage from '../assets/images/services-new/custom-software.png';
+import softwareImage from '../assets/images/services/custom-software.png';
 
 const features = [
   ['Employee Management','Create, update, remove and restore employee records with divisions, departments, grades and designations.'],

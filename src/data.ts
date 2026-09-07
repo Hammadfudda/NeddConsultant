@@ -1,5 +1,4 @@
 import marqueePlaceholder from './assets/images/marquee/placeholder.svg';
-import workPlaceholder from './assets/images/work/logo/nedd-logo.png';
 import marqueeOne from './assets/images/marquee/Rectangle-161124839.png';
 import marqueeTwo from './assets/images/marquee/Rectangle-161124837.png';
 import marqueeThree from './assets/images/marquee/Rectangle-161124835.png';
@@ -9,6 +8,8 @@ import logoDesignImage from './assets/images/services/logo-design-281x300.jpg';
 import webDesignImage from './assets/images/services/web-deisgn-959x1024.jpg';
 import mobileAppImage from './assets/images/services/mob-application-281x300.jpg';
 import customSoftwareImage from './assets/images/services/branding-1438x1536.jpg';
+
+const workPlaceholder = '/nedd-logo.png';
 
 export const SITE = {
   name: 'NEDD Consultant',
