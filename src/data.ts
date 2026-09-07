@@ -70,15 +70,18 @@ export const CASE_STUDIES = [
   { title: 'ELITEREHAB SOLUTIONS', tags: ['Website Development', 'UI/UX Design'], img: workPlaceholder },
   { title: 'ASIAN IMPORTS.MD', tags: ['Website Development', 'UI/UX Design'], img: workPlaceholder },
   { title: 'PEST SOLUTIONS', tags: ['Website Development', 'UI/UX Design'], img: workPlaceholder },
-  { title: 'ELITEREHAB SOLUTIONS', tags: ['Website Development', 'UI/UX Design'], img: workPlaceholder },
-  { title: 'ASIAN IMPORTS.MD', tags: ['Website Development', 'UI/UX Design'], img: workPlaceholder },
-  { title: 'PEST SOLUTIONS', tags: ['Website Development', 'UI/UX Design'], img: workPlaceholder },
-  { title: 'COWBOY STYLE REFINED', tags: ['Website Development', 'UI/UX Design'], img: workPlaceholder },
 ];
 
-const PORTFOLIO = import.meta.glob('./assets/images/portfolio/**/*.{png,jpg,jpeg,svg}', { eager: true }) as Record<string, { default: string }>;
+const PORTFOLIO = import.meta.glob('./assets/images/portfolio/**/*.{png,jpg,jpeg,svg}', { eager: true }) as Record<
+  string,
+  { default: string }
+>;
 
-export type PortfolioCategory = 'Website Design' | 'Website Development' | 'Logo Design' | 'Mobile Application';
+export type PortfolioCategory =
+  | 'Website Design'
+  | 'Website Development'
+  | 'Logo Design'
+  | 'Mobile Application';
 
 export interface PortfolioItem {
   id: number;
@@ -92,16 +95,15 @@ const portfolioItems: PortfolioItem[] = Object.entries(PORTFOLIO)
   .map(([path, module], index) => {
     const normalized = path.replace('./assets/images/portfolio/', '');
     const folder = normalized.split('/')[0];
-    const category =
+
+    const category: PortfolioCategory =
       folder === 'website-design'
         ? 'Website Design'
         : folder === 'website-development'
         ? 'Website Development'
         : folder === 'logo-design' || folder === 'logo'
         ? 'Logo Design'
-        : folder === 'mobile-application'
-        ? 'Mobile Application'
-        : 'Website Design';
+        : 'Mobile Application';
 
     const title =
       normalized
@@ -131,46 +133,34 @@ export interface WorkItem {
   img: string;
 }
 
-export const WORK: WorkItem[] = [
-  { id: 1, title: 'COWBOY STYLE REFINED', category: 'Website', img: workPlaceholder },
-  { id: 2, title: 'SECOND STREET GALLERY', category: 'Website', img: workPlaceholder },
-  { id: 3, title: 'ELITEREHAB SOLUTIONS', category: 'Website', img: workPlaceholder },
-  { id: 4, title: 'ASIAN IMPORTS.MD', category: 'Website', img: workPlaceholder },
-  { id: 5, title: 'PEST SOLUTIONS', category: 'Website', img: workPlaceholder },
-  { id: 6, title: 'ELITEREHAB SOLUTIONS', category: 'Website', img: workPlaceholder },
-  { id: 7, title: 'ASIAN IMPORTS.MD', category: 'Website', img: workPlaceholder },
-  { id: 8, title: 'PEST SOLUTIONS', category: 'Website', img: workPlaceholder },
-  { id: 9, title: 'COWBOY STYLE REFINED', category: 'Website', img: workPlaceholder },
-  { id: 10, title: 'BRAND IDENTITY 01', category: 'Logo', img: workPlaceholder },
-  { id: 11, title: 'BRAND IDENTITY 02', category: 'Logo', img: workPlaceholder },
-  { id: 12, title: 'BRAND IDENTITY 03', category: 'Logo', img: workPlaceholder },
-  { id: 13, title: 'MARK STUDY 12', category: 'Logo', img: workPlaceholder },
-  { id: 14, title: 'MARK STUDY 11', category: 'Logo', img: workPlaceholder },
-  { id: 15, title: 'MARK STUDY 10', category: 'Logo', img: workPlaceholder },
-  { id: 16, title: 'MARK STUDY 16', category: 'Logo', img: workPlaceholder },
-  { id: 17, title: 'MARK STUDY 15', category: 'Logo', img: workPlaceholder },
-  { id: 18, title: 'BRAND IDENTITY 05', category: 'Logo', img: workPlaceholder },
-  { id: 19, title: 'MOBILE APP 01', category: 'Mobile Application', img: workPlaceholder },
-  { id: 20, title: 'MOBILE APP 02', category: 'Mobile Application', img: workPlaceholder },
-  { id: 21, title: 'MOBILE APP 03', category: 'Mobile Application', img: workPlaceholder },
-  { id: 22, title: 'MOBILE APP 04', category: 'Mobile Application', img: workPlaceholder },
-  { id: 23, title: 'MOBILE APP 05', category: 'Mobile Application', img: workPlaceholder },
-  { id: 24, title: 'MOBILE APP 06', category: 'Mobile Application', img: workPlaceholder },
-];
+export const WORK: WorkItem[] = PORTFOLIO_ITEMS.map((item) => ({
+  id: item.id,
+  title: item.title,
+  category:
+    item.category === 'Logo Design'
+      ? 'Logo'
+      : item.category === 'Mobile Application'
+      ? 'Mobile Application'
+      : 'Website',
+  img: item.img,
+}));
 
 export const TESTIMONIALS = [
   {
-    quote: 'The team took time to understand what we were trying to improve before talking about the build. That made the final solution much easier for our staff to use.',
+    quote:
+      'The team took time to understand what we were trying to improve before talking about the build. That made the final solution much easier for our staff to use.',
     name: 'Jordan Avery',
     role: 'Founder, Second Street Gallery',
   },
   {
-    quote: 'We needed more than a website. We needed a clearer way to present the business and manage the work behind it. NEDD helped us think through both sides.',
+    quote:
+      'We needed more than a website. We needed a clearer way to present the business and manage the work behind it. NEDD helped us think through both sides.',
     name: 'Mara Lin',
     role: 'CEO, EliteRehab Solutions',
   },
   {
-    quote: 'Communication was straightforward and the project stayed focused on what the business actually needed. We always knew what was being built and why.',
+    quote:
+      'Communication was straightforward and the project stayed focused on what the business actually needed. We always knew what was being built and why.',
     name: 'Daniel Cho',
     role: 'Owner, Asian Imports',
   },
