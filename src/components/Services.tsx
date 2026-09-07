@@ -1,4 +1,3 @@
-import { ArrowUpRight } from 'lucide-react';
 import { SERVICES } from '../data';
 
 export default function Services() {
@@ -23,24 +22,31 @@ export default function Services() {
                 index === 0 ? 'lg:col-span-2' : ''
               }`}
             >
-              <div className={`relative overflow-hidden ${index === 0 ? 'h-60 sm:h-96' : 'h-52 sm:h-72'}`}>
+              <div className={`relative overflow-hidden ${index === 0 ? 'h-48 sm:h-64' : 'h-40 sm:h-52'}`}>
                 <img
                   src={service.img}
                   alt={service.title}
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
+                <h3 className="absolute bottom-4 left-5 font-display text-xl font-semibold text-white sm:text-2xl">
+                  {service.title}
+                </h3>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
-                <div className="flex items-end justify-between gap-3">
-                  <div>
-                    <h3 className="font-display text-xl font-semibold text-white sm:text-2xl">{service.title}</h3>
-                    <p className="mt-2 max-w-sm text-xs leading-relaxed text-white/70 sm:text-sm">{service.desc}</p>
-                  </div>
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/20 bg-white/10 text-white transition-all group-hover:bg-brand-600 sm:h-11 sm:w-11">
-                    <ArrowUpRight className="h-5 w-5" />
+
+              <div className="space-y-3 p-5 sm:p-6">
+                <div className="flex gap-2.5">
+                  <span className="mt-0.5 shrink-0 rounded-full bg-red-500/15 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-red-300">
+                    Problem
                   </span>
+                  <p className="text-xs leading-relaxed text-white/70 sm:text-sm">{service.problem}</p>
+                </div>
+                <div className="flex gap-2.5">
+                  <span className="mt-0.5 shrink-0 rounded-full bg-brand-500/20 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-brand-300">
+                    Solution
+                  </span>
+                  <p className="text-xs leading-relaxed text-white/90 sm:text-sm">{service.solution}</p>
                 </div>
               </div>
             </article>

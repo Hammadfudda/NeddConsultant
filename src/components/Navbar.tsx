@@ -1,103 +1,89 @@
 import { useEffect, useState } from 'react';
-import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ChevronDown, Menu, X } from 'lucide-react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { SITE } from '../data';
-
-const LINKS = [
-  { label: 'Home', to: '/' },
-  { label: 'About', to: '/about' },
-  { label: 'Services', to: '/services' },
-  { label: 'Work', to: '/work' },
-  { label: 'Contact', to: '/contact' },
-];
+import { SERVICE_ITEMS } from '../data/serviceData';
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  useEffect(() => {
     setOpen(false);
+    setServicesOpen(false);
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
   }, [location.pathname]);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-500 ${
-        scrolled
-          ? 'border-slate-200 bg-white/90 py-3 shadow-sm backdrop-blur-xl'
-          : 'border-transparent bg-white/70 py-4 backdrop-blur-md sm:py-6'
-      }`}
-    >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={SITE.logo} alt={SITE.name} className="h-12 w-auto sm:h-14" />
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/85 backdrop-blur-xl">
+      <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link to="/" className="flex items-center">
+          <img src={SITE.logo} alt={SITE.name} className="h-11 w-auto brightness-0 invert sm:h-12" />
         </Link>
 
-        <ul className="hidden items-center gap-6 lg:gap-8 md:flex">
-          {LINKS.map((link) => (
-            <li key={link.to}>
-              <NavLink
-                to={link.to}
-                className={({ isActive }) =>
-                  `text-sm font-medium transition-colors ${
-                    isActive ? 'text-brand-600' : 'text-slate-600 hover:text-brand-600'
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden items-center gap-7 md:flex">
+          <NavLink to="/" className={({isActive}) => `text-sm font-medium ${isActive ? 'text-sky-400' : 'text-slate-300 hover:text-white'}`}>Home</NavLink>
+          <NavLink to="/about" className={({isActive}) => `text-sm font-medium ${isActive ? 'text-sky-400' : 'text-slate-300 hover:text-white'}`}>About</NavLink>
 
-        <Link
-          to="/contact"
-          className="hidden items-center gap-1.5 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-500/20 md:inline-flex"
-        >
-          Discuss a Project
-          <ArrowUpRight className="h-4 w-4" />
+          <div className="group relative">
+            <Link to="/services" className="flex items-center gap-1 text-sm font-medium text-slate-300 hover:text-white">
+              Services <ChevronDown className="h-4 w-4" />
+            </Link>
+            <div className="invisible absolute left-1/2 top-full mt-3 w-72 -translate-x-1/2 rounded-2xl border border-white/10 bg-slate-950 p-2 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100">
+              {SERVICE_ITEMS.map((service) => (
+                <Link
+                  key={service.slug}
+                  to={`/services/${service.slug}`}
+                  className="block rounded-xl px-4 py-3 text-sm text-slate-300 hover:bg-white/5 hover:text-white"
+                >
+                  {service.title}
+                </Link>
+              ))}
+              <Link to="/leave-management-software" className="mt-1 block rounded-xl bg-blue-600/10 px-4 py-3 text-sm font-semibold text-sky-400 hover:bg-blue-600/20">
+                Leave Management Software
+              </Link>
+            </div>
+          </div>
+
+          <NavLink to="/work" className={({isActive}) => `text-sm font-medium ${isActive ? 'text-sky-400' : 'text-slate-300 hover:text-white'}`}>Work</NavLink>
+          <NavLink to="/contact" className={({isActive}) => `text-sm font-medium ${isActive ? 'text-sky-400' : 'text-slate-300 hover:text-white'}`}>Contact</NavLink>
+        </div>
+
+        <Link to="/contact" className="hidden items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white hover:bg-blue-500 md:inline-flex">
+          Discuss a Project <ArrowUpRight className="h-4 w-4" />
         </Link>
 
-        <button
-          onClick={() => setOpen((value) => !value)}
-          className="rounded-full border border-slate-200 bg-white p-2 text-slate-900 md:hidden"
-          aria-label="Toggle menu"
-        >
+        <button onClick={() => setOpen(!open)} className="rounded-xl border border-white/10 p-2.5 text-white md:hidden">
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
 
-      <div className={`overflow-hidden transition-all duration-300 md:hidden ${open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-        <ul className="mx-4 mt-3 flex flex-col gap-1 rounded-2xl border border-slate-200 bg-white p-3 shadow-xl">
-          {LINKS.map((link) => (
-            <li key={link.to}>
-              <NavLink
-                to={link.to}
-                className={({ isActive }) =>
-                  `block rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
-                    isActive ? 'bg-brand-50 text-brand-700' : 'text-slate-700 hover:bg-slate-50'
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
-            </li>
-          ))}
-          <li>
-            <Link to="/contact" className="mt-1 flex items-center justify-center gap-1.5 rounded-xl bg-brand-600 px-4 py-3 text-sm font-semibold text-white">
-              Discuss a Project <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </li>
-        </ul>
-      </div>
+      {open && (
+        <div className="border-t border-white/10 bg-slate-950 px-4 pb-5 pt-3 md:hidden">
+          <div className="space-y-1">
+            {[
+              ['Home','/'], ['About','/about'], ['Services','/services'], ['Work','/work'], ['Contact','/contact']
+            ].map(([label,to]) => (
+              <Link key={to} to={to} className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-200 hover:bg-white/5">
+                {label}
+              </Link>
+            ))}
+            <button onClick={() => setServicesOpen(!servicesOpen)} className="w-full rounded-xl px-4 py-3 text-left text-sm font-medium text-sky-400">
+              Service pages
+            </button>
+            {servicesOpen && (
+              <div className="ml-3 border-l border-white/10 pl-3">
+                {SERVICE_ITEMS.map((service) => (
+                  <Link key={service.slug} to={`/services/${service.slug}`} className="block px-3 py-2 text-sm text-slate-400">
+                    {service.title}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </header>
   );
 }

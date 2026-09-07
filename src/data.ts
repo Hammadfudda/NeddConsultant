@@ -1,15 +1,14 @@
 import marqueePlaceholder from './assets/images/marquee/placeholder.svg';
-import servicePlaceholder from './assets/images/services/placeholder.svg';
 import workPlaceholder from './assets/images/work/logo/nedd-logo.png';
 import marqueeOne from './assets/images/marquee/Rectangle-161124839.png';
 import marqueeTwo from './assets/images/marquee/Rectangle-161124837.png';
 import marqueeThree from './assets/images/marquee/Rectangle-161124835.png';
 import marqueeFour from './assets/images/marquee/people-sharing-feelings-emotions-group-therapy-session.png';
-import webDesignImage from './assets/images/services/web-deisgn-959x1024.jpg';
-import brandingImage from './assets/images/services/branding-1438x1536.jpg';
-import logoDesignImage from './assets/images/services/logo-design-281x300.jpg';
-import mobileAppImage from './assets/images/services/mob-application-281x300.jpg';
 import webDevelopmentImage from './assets/images/services/web-development.jpg';
+import logoDesignImage from './assets/images/services/logo-design-281x300.jpg';
+import webDesignImage from './assets/images/services/web-deisgn-959x1024.jpg';
+import mobileAppImage from './assets/images/services/mob-application-281x300.jpg';
+import customSoftwareImage from './assets/images/services/branding-1438x1536.jpg';
 
 export const SITE = {
   name: 'NEDD Consultant',
@@ -38,29 +37,34 @@ export const MARQUEE_IMAGES = [
 
 export const SERVICES = [
   {
-    title: 'Custom Business Software',
-    desc: 'Purpose built systems for workflows that have outgrown spreadsheets, manual steps or disconnected tools.',
+    title: 'Website Development',
+    problem: 'Your current site is slow, outdated or impossible to update without calling a developer every time.',
+    solution: 'We build a fast, modern site on a clean codebase that your team can actually maintain and grow.',
     img: webDevelopmentImage,
   },
   {
-    title: 'Web Applications & Portals',
-    desc: 'Secure customer portals, internal applications and web platforms designed around the people using them.',
-    img: webDesignImage,
-  },
-  {
-    title: 'Process Automation',
-    desc: 'Reduce repetitive admin work by moving routine processes, approvals and handoffs into a clearer digital flow.',
-    img: brandingImage,
-  },
-  {
-    title: 'IT Consulting & Integration',
-    desc: 'Plan the right technical approach, connect existing systems and make better decisions before development starts.',
+    title: 'Logo Design',
+    problem: 'Your brand looks inconsistent or generic, and it does not match how serious the business actually is.',
+    solution: 'We design a distinct, professional logo and identity that looks right everywhere it appears.',
     img: logoDesignImage,
   },
   {
-    title: 'Mobile Applications',
-    desc: 'Focused mobile experiences for teams, customers and services that need to work reliably away from a desk.',
+    title: 'Website Design',
+    problem: 'Visitors land on the site and cannot tell what you do or why they should trust you within seconds.',
+    solution: 'We design a clear, on-brand layout that leads visitors straight to the action you want them to take.',
+    img: webDesignImage,
+  },
+  {
+    title: 'Mobile Apps',
+    problem: 'Customers or staff need to get things done on the go, but nothing built for mobile exists yet.',
+    solution: 'We build a focused mobile app for that exact use case, so it works reliably wherever people are.',
     img: mobileAppImage,
+  },
+  {
+    title: 'Custom Software',
+    problem: 'Your team runs core work through spreadsheets, WhatsApp and manual steps that have outgrown the business.',
+    solution: 'We design and build a purpose-built system around your exact workflow — not a generic template.',
+    img: customSoftwareImage,
   },
 ];
 
@@ -76,10 +80,7 @@ export const CASE_STUDIES = [
   { title: 'COWBOY STYLE REFINED', tags: ['Website Development', 'UI/UX Design'], img: workPlaceholder },
 ];
 
-const PORTFOLIO = import.meta.glob('./assets/images/portfolio/**/*.{png,jpg,jpeg,svg}', { eager: true }) as Record<
-  string,
-  { default: string }
->;
+const PORTFOLIO = import.meta.glob('./assets/images/portfolio/**/*.{png,jpg,jpeg,svg}', { eager: true }) as Record<string, { default: string }>;
 
 export type PortfolioCategory = 'Website Design' | 'Website Development' | 'Logo Design' | 'Mobile Application';
 
