@@ -4,11 +4,12 @@ import webDesignImage from './assets/images/services/website-design.png';
 import mobileAppImage from './assets/images/services/mobile-app-development.png';
 import customSoftwareImage from './assets/images/services/custom-software.png';
 
-const workPlaceholder = '/nedd-logo.png';
+const workPlaceholder = '/nedd-consultant-mark.png';
 
 export const SITE = {
   name: 'NEDD Consultant',
-  logo: '/neddconsultantlogo-removebg.png',
+  logo: '/nedd-consultant-logo.png',
+  logoMark: '/nedd-consultant-mark.png',
   email: 'info.neddconsultant@gmail.com',
   phone: '+1 (281) 547-9290',
   address: '111 Town Square Place, Jersey City, NJ 07310',

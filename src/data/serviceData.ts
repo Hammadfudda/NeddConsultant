@@ -9,6 +9,8 @@ export interface ServiceItem {
   title: string;
   eyebrow: string;
   short: string;
+  cardProblem: string;
+  cardSolution: string;
   problem: string;
   solution: string;
   image: string;
@@ -23,6 +25,10 @@ export const SERVICE_ITEMS: ServiceItem[] = [
     title: 'Website Development',
     eyebrow: 'Fast, scalable, maintainable',
     short: 'Modern websites built around performance, clarity and business growth.',
+    cardProblem:
+      'The site takes forever to load, and nobody on your team can touch it without calling a developer first.',
+    cardSolution:
+      'A fast site on a codebase your own team can actually open, edit and understand.',
     problem:
       'Your website is slow, outdated, difficult to update or no longer reflects the quality of the business behind it.',
     solution:
@@ -54,6 +60,10 @@ export const SERVICE_ITEMS: ServiceItem[] = [
     title: 'Logo Design',
     eyebrow: 'A stronger visual first impression',
     short: 'Professional logo systems designed to make your business easier to recognize and trust.',
+    cardProblem:
+      'Your logo looks like it was made in five minutes, and it shows in every invoice and social post.',
+    cardSolution:
+      'One identity that looks the same, and looks intentional, wherever it shows up.',
     problem:
       'Your brand looks generic, inconsistent or disconnected from the level of service your company actually provides.',
     solution:
@@ -85,6 +95,10 @@ export const SERVICE_ITEMS: ServiceItem[] = [
     title: 'Website Design',
     eyebrow: 'Clear UX before code',
     short: 'User-focused website design that makes the business easy to understand and easy to act on.',
+    cardProblem:
+      "People land on the page and leave within seconds because they can't tell what you actually do.",
+    cardSolution:
+      'A layout that answers “what is this?” before anyone has to think about it.',
     problem:
       'Visitors land on the website but cannot quickly understand what you offer, why it matters or what they should do next.',
     solution:
@@ -116,6 +130,10 @@ export const SERVICE_ITEMS: ServiceItem[] = [
     title: 'Mobile App Development',
     eyebrow: 'Business workflows in your users’ hands',
     short: 'Focused mobile experiences for customers, teams and services that need to work away from a desk.',
+    cardProblem:
+      'Your team needs to check something from their phone, and right now that means calling the office.',
+    cardSolution:
+      "One app, built for that one job, that works whether they're on-site or on the road.",
     problem:
       'Your customers or staff need to complete important tasks on the go, but the current process depends on desktop tools or manual communication.',
     solution:
@@ -147,6 +165,10 @@ export const SERVICE_ITEMS: ServiceItem[] = [
     title: 'Custom Software',
     eyebrow: 'Built around your operation',
     short: 'Purpose-built systems for businesses that have outgrown spreadsheets, chat messages and disconnected tools.',
+    cardProblem:
+      'The real business runs on a spreadsheet three people are editing at once and nobody fully trusts.',
+    cardSolution:
+      'A system built around how your team actually works, not a tool you have to work around.',
     problem:
       'Core business work is spread across spreadsheets, messages and repetitive manual steps, making the process difficult to control and scale.',
     solution:

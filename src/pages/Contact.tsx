@@ -1,14 +1,6 @@
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Send,
-  Check,
-  AlertCircle,
-  Loader2,
-} from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Check, AlertCircle, Loader2 } from 'lucide-react';
 import { SITE, EMAILJS } from '../data';
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
@@ -36,12 +28,7 @@ export default function Contact() {
     setErrorMsg('');
 
     emailjs
-      .send(
-        EMAILJS.serviceId,
-        EMAILJS.templateId,
-        templateParams,
-        EMAILJS.publicKey
-      )
+      .send(EMAILJS.serviceId, EMAILJS.templateId, templateParams, EMAILJS.publicKey)
       .then(() => {
         setStatus('success');
         formRef.current?.reset();
@@ -49,11 +36,7 @@ export default function Contact() {
       })
       .catch((error) => {
         setStatus('error');
-        setErrorMsg(
-          error?.text ||
-            error?.message ||
-            'Something went wrong. Please try again.'
-        );
+        setErrorMsg(error?.text || error?.message || 'Something went wrong. Please try again.');
       });
   };
 
@@ -62,93 +45,43 @@ export default function Contact() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
           <div>
-            <p className="font-display text-sm font-medium uppercase tracking-[0.2em] text-brand-600 sm:tracking-[0.25em]">
-              Contact Us
-            </p>
-
-            <h2 className="mt-3 font-display text-2xl font-bold text-slate-950 sm:text-4xl lg:text-5xl">
-              Talk to us about the problem, not the solution
-            </h2>
-
+            <p className="font-display text-sm font-medium uppercase tracking-[0.2em] text-brand-600 sm:tracking-[0.25em]">Contact Us</p>
+            <h2 className="mt-3 font-display text-2xl font-bold text-slate-950 sm:text-4xl lg:text-5xl">Talk to us about the problem, not the solution</h2>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-slate-600">
               Most people who reach out don't know yet if they need a website, an app, or something custom. That's fine — describe what's not working, and we'll help you figure out the rest.
             </p>
 
             <div className="mt-8 space-y-4 sm:mt-10">
-              <a
-                href={`mailto:${SITE.email}`}
-                className="flex items-center gap-4 text-sm text-slate-700 transition-colors hover:text-brand-600"
-              >
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 bg-slate-50 text-brand-600 sm:h-11 sm:w-11">
-                  <Mail className="h-5 w-5" />
-                </span>
+              <a href={`mailto:${SITE.email}`} className="flex items-center gap-4 text-sm text-slate-700 transition-colors hover:text-brand-600">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 bg-slate-50 text-brand-600 sm:h-11 sm:w-11"><Mail className="h-5 w-5" /></span>
                 <span className="break-all">{SITE.email}</span>
               </a>
-
-              <a
-                href={`tel:${SITE.phone}`}
-                className="flex items-center gap-4 text-sm text-slate-700 transition-colors hover:text-brand-600"
-              >
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 bg-slate-50 text-brand-600 sm:h-11 sm:w-11">
-                  <Phone className="h-5 w-5" />
-                </span>
+              <a href={`tel:${SITE.phone}`} className="flex items-center gap-4 text-sm text-slate-700 transition-colors hover:text-brand-600">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 bg-slate-50 text-brand-600 sm:h-11 sm:w-11"><Phone className="h-5 w-5" /></span>
                 {SITE.phone}
               </a>
-
               <div className="flex items-center gap-4 text-sm text-slate-700">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 bg-slate-50 text-brand-600 sm:h-11 sm:w-11">
-                  <MapPin className="h-5 w-5" />
-                </span>
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 bg-slate-50 text-brand-600 sm:h-11 sm:w-11"><MapPin className="h-5 w-5" /></span>
                 {SITE.address}
               </div>
             </div>
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-lg shadow-slate-200/40 sm:rounded-3xl sm:p-8">
-            <h3 className="font-display text-lg font-semibold text-slate-950 sm:text-xl">
-              Send Us the Details
-            </h3>
+            <h3 className="font-display text-lg font-semibold text-slate-950 sm:text-xl">Send Us the Details</h3>
+            <p className="mt-2 text-sm text-slate-500">A few lines about what's going on today is enough to start.</p>
 
-            <p className="mt-2 text-sm text-slate-500">
-              A few lines about what's going on today is enough to start.
-            </p>
-
-            <form
-              ref={formRef}
-              className="mt-5 space-y-4 sm:mt-6"
-              onSubmit={submit}
-            >
+            <form ref={formRef} className="mt-5 space-y-4 sm:mt-6" onSubmit={submit}>
               <div className="grid gap-4 sm:grid-cols-2">
                 <Field label="Full name" name="name" placeholder="Jane Doe" />
-                <Field
-                  label="Phone number"
-                  name="phone_number"
-                  type="tel"
-                  placeholder="+1 555 000 0000"
-                />
+                <Field label="Phone number" name="phone_number" type="tel" placeholder="+1 555 000 0000" />
               </div>
-
               <div className="grid gap-4 sm:grid-cols-2">
-                <Field
-                  label="Email"
-                  name="email"
-                  type="email"
-                  placeholder="jane@company.com"
-                />
-                <Field
-                  label="Business name"
-                  name="business_name"
-                  placeholder="Company name"
-                />
+                <Field label="Email" name="email" type="email" placeholder="jane@company.com" />
+                <Field label="Business name" name="business_name" placeholder="Company name" />
               </div>
-
               <div>
-                <label
-                  htmlFor="message"
-                  className="text-xs font-medium text-slate-600"
-                >
-                  What would you like to solve?
-                </label>
+                <label htmlFor="message" className="text-xs font-medium text-slate-600">What would you like to solve?</label>
                 <textarea
                   id="message"
                   name="message"
@@ -170,31 +103,12 @@ export default function Contact() {
                 type="submit"
                 disabled={status === 'sending'}
                 className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold text-white transition-all disabled:opacity-60 ${
-                  status === 'success'
-                    ? 'bg-emerald-600'
-                    : 'bg-brand-600 hover:bg-brand-700'
+                  status === 'success' ? 'bg-emerald-600' : 'bg-brand-600 hover:bg-brand-700'
                 }`}
               >
-                {status === 'sending' && (
-                  <>
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                    Sending...
-                  </>
-                )}
-
-                {status === 'success' && (
-                  <>
-                    <Check className="h-4 w-4" />
-                    Message sent
-                  </>
-                )}
-
-                {(status === 'idle' || status === 'error') && (
-                  <>
-                    <Send className="h-4 w-4" />
-                    Send Message
-                  </>
-                )}
+                {status === 'sending' && <><Loader2 className="h-4 w-4 animate-spin" /> Sending...</>}
+                {status === 'success' && <><Check className="h-4 w-4" /> Message sent</>}
+                {(status === 'idle' || status === 'error') && <><Send className="h-4 w-4" /> Send Message</>}
               </button>
             </form>
           </div>
@@ -204,22 +118,10 @@ export default function Contact() {
   );
 }
 
-function Field({
-  label,
-  name,
-  type = 'text',
-  placeholder,
-}: {
-  label: string;
-  name: string;
-  type?: string;
-  placeholder?: string;
-}) {
+function Field({ label, name, type = 'text', placeholder }: { label: string; name: string; type?: string; placeholder?: string }) {
   return (
     <div>
-      <label htmlFor={name} className="text-xs font-medium text-slate-600">
-        {label}
-      </label>
+      <label htmlFor={name} className="text-xs font-medium text-slate-600">{label}</label>
       <input
         id={name}
         name={name}

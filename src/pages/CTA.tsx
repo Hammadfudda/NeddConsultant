@@ -9,15 +9,10 @@ export default function CTA() {
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute left-1/2 top-0 h-64 w-96 -translate-x-1/2 rounded-full bg-brand-400/10 blur-[100px]" />
           </div>
-
-          <h2 className="font-display text-2xl font-bold text-slate-950 sm:text-4xl lg:text-5xl">
-            Still deciding if this is worth a conversation?
-          </h2>
-
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:mt-5 sm:text-base">
+          <h2 className="font-display text-2xl font-bold text-slate-950 sm:text-4xl lg:text-5xl">Still deciding if this is worth a conversation?</h2>
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-slate-600 sm:mt-5 sm:text-base">
             You don't need a technical brief or a fixed idea of the solution. Describe the problem as you see it — we'll tell you honestly if it's something we can help with.
           </p>
-
           <Link
             to="/contact"
             className="mt-7 inline-flex items-center gap-2 rounded-full bg-brand-600 px-7 py-3.5 text-sm font-semibold text-white transition-all hover:bg-brand-700 hover:shadow-xl hover:shadow-brand-500/20"
